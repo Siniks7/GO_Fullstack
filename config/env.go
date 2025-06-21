@@ -51,3 +51,13 @@ func NewDatabaseConfig() *DatabaseConfig {
 		url: getString("DATABASE_URL", ""),
 	}
 }
+
+type LogConfig struct {
+	Level int
+}
+
+func NewLogConfig() *LogConfig {
+	return &LogConfig{
+		Level: getInt("LOG_LEVEL", 0),
+	}
+}
