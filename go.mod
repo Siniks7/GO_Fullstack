@@ -4,7 +4,10 @@ go 1.23.4
 
 require github.com/gofiber/fiber/v2 v2.52.8
 
-require github.com/rs/zerolog v1.34.0 // indirect
+require (
+	github.com/gofiber/contrib/fiberzerolog v1.0.3 // indirect
+	github.com/rs/zerolog v1.34.0 // indirect
+)
 
 require (
 	github.com/andybalholm/brotli v1.1.0 // indirect
