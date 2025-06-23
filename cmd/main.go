@@ -4,6 +4,7 @@ import (
 	"go_fullstack/config"
 	"go_fullstack/internal/home"
 	"go_fullstack/pkg/logger"
+	"strings"
 
 	"github.com/gofiber/contrib/fiberzerolog"
 	"github.com/gofiber/fiber/v2"
@@ -17,6 +18,11 @@ func main() {
 	logConfig := config.NewLogConfig()
 	customLogger := logger.NewLogger(logConfig)
 	engine := html.New("./html", ".html")
+	engine.AddFuncMap(map[string]interface{}{
+		"ToUpper": func(c string) string {
+			return strings.ToUpper(c)
+		},
+	})
 	app := fiber.New(fiber.Config{
 		Views: engine,
 	})
