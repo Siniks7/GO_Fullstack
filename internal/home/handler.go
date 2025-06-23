@@ -1,7 +1,7 @@
 package home
 
 import (
-	"go_fullstack/pkg/logger/tadapter.go"
+	"go_fullstack/pkg/tadapter.go"
 	"go_fullstack/views"
 
 	"github.com/gofiber/fiber/v2"
