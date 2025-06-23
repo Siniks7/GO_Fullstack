@@ -2,17 +2,13 @@ module go_fullstack
 
 go 1.23.4
 
-require github.com/gofiber/fiber/v2 v2.52.8
-
 require (
+	github.com/gofiber/fiber/v2 v2.52.8
 	github.com/gofiber/contrib/fiberzerolog v1.0.3 // indirect
 	github.com/gofiber/template v1.8.3 // indirect
 	github.com/gofiber/template/html/v2 v2.1.3 // indirect
 	github.com/gofiber/utils v1.1.0 // indirect
 	github.com/rs/zerolog v1.34.0 // indirect
-)
-
-require (
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/joho/godotenv v1.5.1
