@@ -23,21 +23,15 @@ func NewHandler(router fiber.Router, customLogger *zerolog.Logger) {
 		router:       router,
 		customLogger: customLogger,
 	}
-	api := h.router.Group("/api")
-	api.Get("/", h.home)
-	api.Get("/error", h.error)
+	h.router.Get("/", h.home)
+	h.router.Get("/404", h.error)
 }
 
 func (h *HomeHandler) home(c *fiber.Ctx) error {
-	component := views.Hello("Anton")
+	component := views.Main()
 	return tadapter.Render(c, component)
 }
 
 func (h *HomeHandler) error(c *fiber.Ctx) error {
-	// h.customLogger.Info().
-	// 	Bool("isAdmin", true).
-	// 	Str("email", "siniks7@yandex.ru").
-	// 	Int("id", 10).
-	// 	Msg("Инфо")
 	return c.SendString("Error")
 }
