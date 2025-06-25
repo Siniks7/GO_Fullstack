@@ -62,7 +62,7 @@ func MenuStyle() templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<style>\r\n\t\t.menu {\r\n\t\t\tdisplay: flex;\r\n\t\t\tjustify-content: space-between;\r\n\t\t\tpadding: 20px 0;\r\n\t\t}\r\n\t\t.menu__right {\r\n\t\t\tdisplay: flex;\r\n\t\t\tgap: 20px;\r\n            cursor: pointer;\r\n\t\t}\r\n\t\t.menu__right-link {\r\n\t\t\ttext-decoration: none;\r\n\t\t\tcolor: #FFFFFF;\r\n\t\t\tfont-size: 16px;\r\n\t\t\tcursor: pointer;\r\n\t\t}\r\n\t\t.menu__right-link:hover {\r\n\t\t\tcolor: #9f9f9f;\r\n\t\t}\r\n\t</style>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<style>\r\n\t\t.menu {\r\n\t\t\tdisplay: flex;\r\n\t\t\tjustify-content: space-between;\r\n\t\t\tpadding: 20px 0;\r\n\t\t}\r\n\t\t.menu__right {\r\n\t\t\tdisplay: flex;\r\n\t\t\tgap: 20px;\r\n            cursor: pointer;\r\n\t\t}\r\n\t\t.menu__right-link {\r\n\t\t\ttext-decoration: none;\r\n\t\t\tcolor: var(--color-white);\r\n\t\t\tfont-size: 16px;\r\n\t\t\tcursor: pointer;\r\n\t\t}\r\n\t\t.menu__right-link:hover {\r\n\t\t\tcolor: #9f9f9f;\r\n\t\t}\r\n\t</style>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
