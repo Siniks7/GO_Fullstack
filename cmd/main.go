@@ -17,6 +17,7 @@ func main() {
 	customLogger := logger.NewLogger(logConfig)
 	app := fiber.New()
 	app.Use(recover.New())
+	app.Static("/public", "./public")
 	app.Use(fiberzerolog.New(fiberzerolog.Config{
 		Logger: customLogger,
 	}))
