@@ -2,6 +2,7 @@ package views
 
 import "go_fullstack/views/components"
 import "go_fullstack/views/components/layout"
+import "go_fullstack/views/widgets"
 
 
 templ Main() {
@@ -12,18 +13,11 @@ templ Main() {
 		<main>
 			@MainStyle()
 			@layout.Header() {
-			@components.Title("Найди работу своей мечты!")
+			@components.Title("Найди работу своей мечты")
 			@components.SubTitle("Простой поиск работы")
 			}
 			<div class="main__submit-form">
-				@components.Title2("Опубликовать вакансию")
-				@components.Input(components.InputProps{
-					Name: "role",
-					Placeholder: "Должность",
-				})
-				@components.SubmitButton() {
-					<span>Отправить</span>
-				}
+				@widgets.VacancyForm()
 			</div>
 		</main>
 	}
@@ -33,6 +27,10 @@ templ MainStyle() {
 <style>
 	.main__submit-form {
 		background: rgba(48, 150, 137, 0.10);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 60px 0 120px 0;
 	}
 </style>
 }
