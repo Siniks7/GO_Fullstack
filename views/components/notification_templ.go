@@ -104,7 +104,7 @@ func NotificationStyle() templ.Component {
 			templ_7745c5c3_Var5 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<style>\r\n\t.notification {\r\n\t\twidth: 100%;\r\n\t\tpadding: 30px;\r\n\t\tcolor: var(--color-white);\r\n\t\ttext-align: center;\r\n\t\tfont-size: 16px;\r\n\t}\r\n\t.notification_success {\r\n\t\tbackground-color: #31b4a3;\r\n\t}\r\n\r\n\t.notification_fail {\r\n\t\tbackground-color: #b43133;\r\n\t}\r\n\t</style>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<style>\r\n\t.notification {\r\n\t\twidth: 100%;\r\n\t\tpadding: 30px;\r\n\t\tcolor: var(--color-white);\r\n\t\ttext-align: center;\r\n\t\tfont-size: 16px;\r\n\t}\r\n\t.notification_success {\r\n\t\tbackground-color: #31b4a3;\r\n\t}\r\n\r\n\t.notification_fail {\r\n\t\tbackground-color: #b43133;\r\n\t}\r\n\t.htmx-swapping .notification {\r\n\t\topacity: 0;\r\n\t\ttransition: opacity 1s ease-out;\r\n\t}\r\n\t</style>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
