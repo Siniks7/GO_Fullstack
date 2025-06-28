@@ -4,6 +4,7 @@ import (
 	"go_fullstack/config"
 	"go_fullstack/internal/home"
 	"go_fullstack/internal/vacancy"
+	"go_fullstack/pkg/database"
 	"go_fullstack/pkg/logger"
 
 	"github.com/gofiber/contrib/fiberzerolog"
@@ -13,12 +14,14 @@ import (
 
 func main() {
 	config.Init()
-	config.NewDatabaseConfig()
+	dbConfig := config.NewDatabaseConfig()
 	logConfig := config.NewLogConfig()
 	customLogger := logger.NewLogger(logConfig)
 	app := fiber.New()
 	app.Use(recover.New())
 	app.Static("/public", "./public")
+	dbpool := database.CreateDbPool(dbConfig, customLogger)
+	defer dbpool.Close()
 	app.Use(fiberzerolog.New(fiberzerolog.Config{
 		Logger: customLogger,
 	}))
