@@ -22,10 +22,14 @@ func main() {
 	app.Static("/public", "./public")
 	dbpool := database.CreateDbPool(dbConfig, customLogger)
 	defer dbpool.Close()
+
+	// Repositories
+	vacancyRepo := vacancy.NewVacancyRepository(dbpool, customLogger)
+
 	app.Use(fiberzerolog.New(fiberzerolog.Config{
 		Logger: customLogger,
 	}))
 	home.NewHandler(app, customLogger)
-	vacancy.NewHandler(app, customLogger)
+	vacancy.NewHandler(app, customLogger, vacancyRepo)
 	app.Listen(":3000")
 }
