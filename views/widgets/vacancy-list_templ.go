@@ -91,7 +91,7 @@ func VacancyListStyle() templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<style>\r\n\t.vacancy-list__wrapper {\r\n\t\twidth: 100%;\r\n\t\tmax-width: 1296px;\r\n\t\tmargin: 0 auto;\r\n\t\tpadding: 60px 0;\r\n\t}\r\n\t.vacancy-list__wrapper p {\r\n\t\tmargin-bottom: 60px;\r\n\t}\r\n\t.vacancy-list {\r\n\t\tdisplay: flex;\r\n\t\talign-items: center;\r\n\t\tflex-direction: column;\r\n\t\tgap: 24px;\r\n        width: 100%;\r\n        max-width: 1296px;\r\n\t}\r\n</style>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<style>\r\n\t.vacancy-list__wrapper {\r\n\t\twidth: 100%;\r\n\t\tmax-width: 1296px;\r\n\t\tmargin: 0 auto;\r\n\t\tpadding: 60px 0;\r\n\t}\r\n\t.vacancy-list__wrapper p {\r\n\t\tmargin-bottom: 60px;\r\n\t}\r\n\t.vacancy-list {\r\n\t\tdisplay: flex;\r\n\t\talign-items: center;\r\n\t\tflex-direction: column;\r\n\t\tgap: 24px;\r\n\t}\r\n</style>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
