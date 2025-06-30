@@ -40,7 +40,7 @@ func (r *VacancyRepository) addVacancy(form VacancyCreateForm) error {
 	return nil
 }
 
-func (r *VacancyRepository) getAll() ([]Vacancy, error) {
+func (r *VacancyRepository) GetAll() ([]Vacancy, error) {
 	query := "SELECT * from vacancies"
 	rows, err := r.Dbpool.Query(context.Background(), query)
 	if err != nil {

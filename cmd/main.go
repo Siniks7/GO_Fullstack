@@ -29,7 +29,7 @@ func main() {
 	app.Use(fiberzerolog.New(fiberzerolog.Config{
 		Logger: customLogger,
 	}))
-	home.NewHandler(app, customLogger)
+	home.NewHandler(app, customLogger, vacancyRepo)
 	vacancy.NewHandler(app, customLogger, vacancyRepo)
 	app.Listen(":3000")
 }
