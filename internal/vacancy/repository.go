@@ -39,3 +39,16 @@ func (r *VacancyRepository) addVacancy(form VacancyCreateForm) error {
 	}
 	return nil
 }
+
+func (r *VacancyRepository) getAll() ([]Vacancy, error) {
+	query := "SELECT * from vacancies"
+	rows, err := r.Dbpool.Query(context.Background(), query)
+	if err != nil {
+		return nil, err
+	}
+	vacancies, err := pgx.CollectRows(rows, pgx.RowToStructByName[Vacancy])
+	if err != nil {
+		return nil, err
+	}
+	return vacancies, nil
+}
