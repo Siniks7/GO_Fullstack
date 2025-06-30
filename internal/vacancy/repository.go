@@ -41,7 +41,7 @@ func (r *VacancyRepository) addVacancy(form VacancyCreateForm) error {
 }
 
 func (r *VacancyRepository) GetAll() ([]Vacancy, error) {
-	query := "SELECT * from vacancies"
+	query := "SELECT * from vacancies ORDER BY createdat"
 	rows, err := r.Dbpool.Query(context.Background(), query)
 	if err != nil {
 		return nil, err
