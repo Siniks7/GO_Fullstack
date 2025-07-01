@@ -11,6 +11,8 @@ github.com/gofiber/contrib/fiberzerolog v1.0.3 h1:Z97hA5bNfThtZjEYG12g9YcT8I/cmC
 github.com/gofiber/contrib/fiberzerolog v1.0.3/go.mod h1:0MD+NNFy0nZwiSo4dSVW7WwWVzOyuATNXwhJwgOP8uM=
 github.com/gofiber/fiber/v2 v2.52.8 h1:xl4jJQ0BV5EJTA2aWiKw/VddRpHrKeZLF0QPUxqn0x4=
 github.com/gofiber/fiber/v2 v2.52.8/go.mod h1:YEcBbO/FB+5M1IZNBP9FO3J9281zgPAreiI1oqg8nDw=
+github.com/gofiber/storage/postgres/v3 v3.2.0 h1:YjRkT8prZQkX8kzqLt1yKLgFqN7EyX4sDJO9/RcqVnM=
+github.com/gofiber/storage/postgres/v3 v3.2.0/go.mod h1:EZlVNy3zFuE2ylBbXS8/3WBwSoGHlnAt+IzlFJfsW7I=
 github.com/gofrs/uuid v4.4.0+incompatible h1:3qXRTX8/NbyulANqlc0lchS1gqAVxRgsuW1YrTJupqA=
 github.com/gofrs/uuid v4.4.0+incompatible/go.mod h1:b2aQJv3Z4Fp6yNu3cdSllBxTCLRxnplIgP/c0N/04lM=
 github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
