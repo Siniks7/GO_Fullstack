@@ -3,6 +3,7 @@ package main
 import (
 	"go_fullstack/config"
 	"go_fullstack/internal/home"
+	"go_fullstack/internal/sitemap"
 	"go_fullstack/internal/vacancy"
 	"go_fullstack/pkg/database"
 	"go_fullstack/pkg/logger"
@@ -43,7 +44,11 @@ func main() {
 	app.Use(fiberzerolog.New(fiberzerolog.Config{
 		Logger: customLogger,
 	}))
+
+	// Handlers
 	home.NewHandler(app, customLogger, vacancyRepo, store)
 	vacancy.NewHandler(app, customLogger, vacancyRepo)
+	sitemap.NewHandler(app)
+
 	app.Listen(":3000")
 }
