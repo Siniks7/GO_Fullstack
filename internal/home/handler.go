@@ -4,6 +4,7 @@ import (
 	"go_fullstack/internal/vacancy"
 	"go_fullstack/pkg/tadapter.go"
 	"go_fullstack/views"
+	"go_fullstack/views/components"
 	"math"
 	"net/http"
 
@@ -34,6 +35,7 @@ func NewHandler(router fiber.Router, customLogger *zerolog.Logger, repository *v
 	h.router.Get("/", h.home)
 	h.router.Get("/404", h.error)
 	h.router.Get("/login", h.login)
+	h.router.Post("/api/login", h.apiLogin)
 }
 
 func (h *HomeHandler) home(c *fiber.Ctx) error {
@@ -58,15 +60,28 @@ func (h *HomeHandler) home(c *fiber.Ctx) error {
 
 func (h *HomeHandler) login(c *fiber.Ctx) error {
 	component := views.Login()
-	sess, err := h.store.Get(c)
-	if err != nil {
-		panic(err)
-	}
-	sess.Set("name", "Антон")
-	if err := sess.Save(); err != nil {
-		panic(err)
-	}
 	return tadapter.Render(c, component, http.StatusOK)
+}
+
+func (h *HomeHandler) apiLogin(c *fiber.Ctx) error {
+	form := LoginForm{
+		Email:    c.FormValue("email"),
+		Password: c.FormValue("password"),
+	}
+	if form.Email == "a@a.ru" && form.Password == "1" {
+		sess, err := h.store.Get(c)
+		if err != nil {
+			panic(err)
+		}
+		sess.Set("email", form.Email)
+		if err := sess.Save(); err != nil {
+			panic(err)
+		}
+		c.Response().Header.Add("Hx-Redirect", "/")
+		return c.Redirect("/", http.StatusOK)
+	}
+	component := components.Notification("Неверный логин или пароль", components.NotificationFail)
+	return tadapter.Render(c, component, http.StatusBadRequest)
 }
 
 func (h *HomeHandler) error(c *fiber.Ctx) error {
