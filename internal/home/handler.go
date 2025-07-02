@@ -36,6 +36,7 @@ func NewHandler(router fiber.Router, customLogger *zerolog.Logger, repository *v
 	h.router.Get("/404", h.error)
 	h.router.Get("/login", h.login)
 	h.router.Post("/api/login", h.apiLogin)
+	h.router.Get("/api/logout", h.apiLogout)
 }
 
 func (h *HomeHandler) home(c *fiber.Ctx) error {
@@ -50,12 +51,8 @@ func (h *HomeHandler) home(c *fiber.Ctx) error {
 		userEmail = email
 	}
 	if userEmail == "" {
-		if userEmail == "" {
-			if c.Get("HX-Request") == "true" {
-				c.Set("HX-Redirect", "/login")
-				return c.SendStatus(http.StatusUnauthorized)
-			}
-			return c.Redirect("/login")
+		c.Response().Header.Add("Hx-Redirect", "/login")
+		return c.Redirect("/login", http.StatusOK)
 		}
 	}
 	c.Locals("email", userEmail)
@@ -67,6 +64,19 @@ func (h *HomeHandler) home(c *fiber.Ctx) error {
 	}
 	component := views.Main(vacancies, int(math.Ceil((float64(count) / float64(PAGE_ITEMS)))), page)
 	return tadapter.Render(c, component, http.StatusOK)
+}
+
+func (h *HomeHandler) apiLogout(c *fiber.Ctx) error {
+	sess, err := h.store.Get(c)
+	if err != nil {
+		panic(err)
+	}
+	sess.Delete("email")
+	if err := sess.Save(); err != nil {
+		panic(err)
+	}
+	c.Response().Header.Add("Hx-Redirect", "/login")
+	return c.Redirect("/login", http.StatusOK)
 }
 
 func (h *HomeHandler) login(c *fiber.Ctx) error {
