@@ -53,7 +53,6 @@ func (h *HomeHandler) home(c *fiber.Ctx) error {
 	if userEmail == "" {
 		c.Response().Header.Add("Hx-Redirect", "/login")
 		return c.Redirect("/login", http.StatusOK)
-		}
 	}
 	c.Locals("email", userEmail)
 	count := h.repository.CountAll()
