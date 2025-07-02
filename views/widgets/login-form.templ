@@ -4,29 +4,30 @@ import "go_fullstack/views/components"
 
 templ LoginForm() {
 	@LoginFormStyle()
-	<div id="login-result"></div>
-	<form
-		hx-ext="response-targets"
-		hx-post="/api/login"
-		hx-trigger="submit"
-		class="login-form"
-		hx-target="#login-result"
-		hx-target-error="#login-result"
-		hx-swap="innerHTML"
-	>
-		@components.Input(components.InputProps{
-			Name: "email",
-			Placeholder: "Email",
-		})
-		@components.Input(components.InputProps{
-			Name: "password",
-			Placeholder: "Пароль",
-            Type: "password",
-		})
-		@components.SubmitButton() {
-			<div>Опубликовать</div>
-		}
-	</form>
+	<div hx-ext="response-targets" class="login-wrapper">
+		<div id="login-result"></div>
+		<form
+			hx-post="/api/login"
+			hx-trigger="submit"
+			class="login-form"
+			hx-target="#login-result"
+			hx-target-error="#login-result"
+			hx-swap="innerHTML"
+		>
+			@components.Input(components.InputProps{
+				Name:        "email",
+				Placeholder: "Email",
+			})
+			@components.Input(components.InputProps{
+				Name:        "password",
+				Placeholder: "Пароль",
+				Type:        "password",
+			})
+			@components.SubmitButton() {
+				<div>Опубликовать</div>
+			}
+		</form>
+	</div>
 }
 
 templ LoginFormStyle() {
@@ -35,6 +36,12 @@ templ LoginFormStyle() {
 		display: flex;
 		flex-direction: column;
 		gap: 30px;
+		width: 100%;
+		max-width: 520px;
+	}
+	.login-wrapper {
+		display: flex;
+		flex-direction: column;
 		width: 100%;
 		max-width: 520px;
 	}
