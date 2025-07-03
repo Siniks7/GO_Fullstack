@@ -1,21 +1,32 @@
+version: '3.8'
+
 services:
   postgres:
     container_name: postgres_go
     image: postgres:16.4
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 4345
+      POSTGRES_PASSWORD: 4345 
       PGDATA: /data/postgres
     volumes:
       - ./postgres-data:/data/postgres
     ports:
       - "5432:5432"
-app:
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
     container_name: app_go
     image: go-app
+    depends_on:
+      postgres:
+        condition: service_healthy
     environment:
       LOG_LEVEL: 0
       LOG_FORMAT: "console"
-      DATABASE_URL: "postgres://postgres:my_pass@postgres:5432/job?sslmode=disable"
+      DATABASE_URL: "postgres://postgres:4345@postgres:5432/postgres?sslmode=disable" 
     ports:
       - "3001:3000"
